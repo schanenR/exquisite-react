@@ -11,14 +11,17 @@ const PlayerSubmissionForm = () => {
       <form className="PlayerSubmissionForm__form" >
 
         <div className="PlayerSubmissionForm__poem-inputs">
-
-          {
-            // Put your form inputs here... We've put in one below as an example
-          }
-          <input
-            placeholder="hm..."
-            type="text" />
-
+          
+          <label>The</label>
+          <input placeholder="adjective" type="text" />
+          <input placeholder="noun" type="text" />
+          <input placeholder="adverb" type="text" />
+          <input placeholder="verb" type="text" />
+          <label>the</label>
+          <input placeholder="adjactive" type="text" />
+          <input placeholder="noun" type="text" />
+          <label>.</label>
+     
         </div>
 
         <div className="PlayerSubmissionForm__submit">
