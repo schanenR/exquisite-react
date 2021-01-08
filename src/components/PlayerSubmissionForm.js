@@ -4,6 +4,39 @@ import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = () => {
+
+  const[fields, setFields] = useState ({
+    adj1: '',
+    noun1: '',
+    adverb: '',
+    verb: '',
+    adj2: '',
+    noun2: ''
+  });
+
+  const onFormChange = (event) => {
+    const newFormFields = {
+      ...fields
+    };
+
+    newFormFields[event.target.name] = event.target.value;
+    setFields(newFormFields);
+  };
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    props.sendSubmission(fields);
+
+    setFields({
+      adj1: '',
+      noun1: '',
+      adverb: '',
+      verb: '',
+      adj2: '',
+      noun2: ''
+    });
+  };
+
   return (
     <div className="PlayerSubmissionForm">
       <h3>Player Submission Form for Player #{  }</h3>
