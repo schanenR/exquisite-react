@@ -14,14 +14,12 @@ const PlayerSubmissionForm = (props) => {
     noun2: ''
   };
 
-  const [fields, setFields] = useState ({
-    newFields
-  });
+  const [fields, setFields] = useState (newFields);
 
   const onFormChange = (event) => {
     const newFormFields = {
       ...fields
-    };
+    }
 
     newFormFields[event.target.name] = event.target.value;
     setFields(newFormFields);
@@ -31,59 +29,34 @@ const PlayerSubmissionForm = (props) => {
     event.preventDefault();
     props.sendSubmission(fields);
 
-    setFields({
-      newFields
-    });
+    setFields(newFields);
   };
 
   return (
     <div className="PlayerSubmissionForm">
-      <h3>Player Submission Form for Player #{  }</h3>
+      <h3>Player Submission Form for Player #{props.index}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onFormSubmit} >
 
-        <div className="PlayerSubmissionForm__poem-inputs">
-          
-          <label>The</label>
-          <input 
-            placeholder="adjective" 
-            type="text" 
-            onChange={onFormChange} 
-            value={fields.adj1}
-          />
-          <input 
-            placeholder="noun" 
-            type="text" 
-            onChange={onFormChange}
-            value={fields.noun1} 
-          />
-          <input 
-            placeholder="adverb" 
-            type="text" 
-            onChange={onFormChange} 
-            value={fields.adverb}
-          />
-          <input 
-          placeholder="verb" 
-          type="text" 
-          onChange={onFormChange} 
-          value={fields.verb}
-          />
-          <label>the</label>
-          <input 
-          placeholder="adjactive" 
-          type="text" 
-          onChange={onFormChange}
-          value={fields.adj2}
-          />
-          <input 
-          placeholder="noun" 
-          type="text" 
-          onChange={onFormChange} 
-          value={fields.noun2}
-          />
-          <label>.</label>
-     
+         <div className="PlayerSubmissionForm__poem-inputs">
+          {
+            props.fields.map((field, i) => {
+              if (field.key) {
+                return(
+                  <input 
+                    key={field.key}
+                    name={field.key}
+                    placeholder={field.placeholder}
+                    onChange={onFormChange}
+                    value={fields[field.key] || ''}
+                    type='text'
+                  />)
+              } else {
+                return field;
+              }
+            })
+          }
+
         </div>
 
         <div className="PlayerSubmissionForm__submit">

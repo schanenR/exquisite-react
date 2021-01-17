@@ -16,7 +16,7 @@ const Game = () => {
 
   const [player, setCurrentPlayer] = useState(1);
   const [playerSubmission, setPlayerSubmission] = useState([]);
-  const[isSubmitted, setIsSubmitted] = useState(false);
+  // const[isSubmitted, setIsSubmitted] = useState(false);
 
   const addPlayerSubmission = (submission) => {
     const poem = [...playerSubmission];
@@ -39,7 +39,11 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm fields={FIELDS} sendSubmission={addPlayerSubmission} />
+      <PlayerSubmissionForm 
+        index={player} 
+        fields={FIELDS} 
+        sendSubmission={addPlayerSubmission} 
+      />
 
       <FinalPoem />
 
