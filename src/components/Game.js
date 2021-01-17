@@ -50,7 +50,7 @@ const Game = () => {
       />
 
       <FinalPoem 
-        isSubmitted={isSubmitted}
+        isSubmitted={setIsSubmitted}
         submissions={playerSubmission}
         revealPoem={revealPoem}
       />

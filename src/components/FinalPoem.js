@@ -11,20 +11,24 @@ const FinalPoem = (props) => {
 
   if (props.isSubmitted) {
     return (
-      <div></div>
-    )
-  } else {
-    return (
       <div className="FinalPoem">
         <section className="FinalPoem__poem">
           <h3>Final Poem</h3>
-
+            {props.submissions.map((submission, i) => (
+              <p key={i}>The {submission.adj1} {submission.noun1} {submission.adv} {submission.verb} the {submission.adj2} {submission.noun2}.</p>
+              ))}
         </section>
-
-        <div className="FinalPoem__reveal-btn-container">
-          <input type="button" value="We are finished: Reveal the Poem" className="FinalPoem__reveal-btn" />
-        </div>
       </div>
+    )
+  } else {
+    return (
+      <div className="FinalPoem__reveal-btn-container">
+        <input 
+          onClick={onSubmission}
+          type="button" 
+          value="We are finished: Reveal the Poem" 
+          className="FinalPoem__reveal-btn" />
+      </div>     
     )
   };
 }
