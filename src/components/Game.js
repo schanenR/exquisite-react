@@ -25,9 +25,12 @@ const Game = () => {
     setCurrentPlayer(player + 1);
   };
 
+
   const revealPoem = () => {
     setIsSubmitted(true);
   }
+
+  const lastSubmission = playerSubmission[playerSubmission.length - 1]
 
   return (
     <div className="Game">
@@ -41,13 +44,17 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {!isSubmitted &&
+        <RecentSubmission submission={lastSubmission} />
+      }
 
-      <PlayerSubmissionForm 
-        index={player} 
-        fields={FIELDS} 
-        sendSubmission={addPlayerSubmission} 
-      />
+      {!isSubmitted &&
+        <PlayerSubmissionForm 
+          index={player} 
+          fields={FIELDS} 
+          sendSubmission={addPlayerSubmission} 
+        />
+      }
 
       <FinalPoem 
         isSubmitted={isSubmitted}

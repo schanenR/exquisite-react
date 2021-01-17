@@ -14,22 +14,33 @@ const PlayerSubmissionForm = (props) => {
     noun2: ''
   };
 
-  const [fields, setFields] = useState (newFields);
+  const [currentFields, setCurrentFields] = useState (newFields);
 
   const onFormChange = (event) => {
     const newFormFields = {
-      ...fields
+      ...currentFields
     }
 
     newFormFields[event.target.name] = event.target.value;
-    setFields(newFormFields);
+    setCurrentFields(newFormFields);
   };
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    props.sendSubmission(fields);
 
-    setFields(newFields);
+    const line = props.fields.map(field => {
+      const fieldsSubmitted = {...currentFields};
+
+      if (field.key) {
+        return fieldsSubmitted[field.key];
+      } else {
+        return field 
+      }
+    }).join(' ');
+
+    props.sendSubmission(line);
+
+    setCurrentFields(newFields);
   };
 
   return (
@@ -48,7 +59,7 @@ const PlayerSubmissionForm = (props) => {
                     name={field.key}
                     placeholder={field.placeholder}
                     onChange={onFormChange}
-                    value={fields[field.key] || ''}
+                    value={currentFields[field.key] || ''}
                     type='text'
                   />)
               } else {
