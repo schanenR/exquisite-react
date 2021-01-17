@@ -4,12 +4,7 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
-  const onSubmission = (event) => {
-    event.preventDefault();
-    props.revealPoem();
-  };
-
-  if (props.isSubmitted) {
+  if (props.isSubmitted === true) {
     return (
       <div className="FinalPoem">
         <section className="FinalPoem__poem">
@@ -24,7 +19,7 @@ const FinalPoem = (props) => {
     return (
       <div className="FinalPoem__reveal-btn-container">
         <input 
-          onClick={onSubmission}
+          onClick={props.revealPoem}
           type="button" 
           value="We are finished: Reveal the Poem" 
           className="FinalPoem__reveal-btn" />
