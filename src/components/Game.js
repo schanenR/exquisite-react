@@ -44,7 +44,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      {!isSubmitted &&
+      {!isSubmitted && lastSubmission &&
         <RecentSubmission submission={lastSubmission} />
       }
 

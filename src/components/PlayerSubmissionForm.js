@@ -61,6 +61,7 @@ const PlayerSubmissionForm = (props) => {
                     onChange={onFormChange}
                     value={currentFields[field.key] || ''}
                     type='text'
+                    className={currentFields[field.key] ? 'validInput' : 'invalidInput'}
                   />)
               } else {
                 return field;
