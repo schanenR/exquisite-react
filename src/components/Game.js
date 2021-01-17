@@ -25,6 +25,10 @@ const Game = () => {
     setCurrentPlayer(player + 1);
   };
 
+  const revealPoem = () => {
+    setIsSubmitted(true);
+  }
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -45,7 +49,11 @@ const Game = () => {
         sendSubmission={addPlayerSubmission} 
       />
 
-      <FinalPoem isSubmitted={isSubmitted}/>
+      <FinalPoem 
+        isSubmitted={isSubmitted}
+        submissions={playerSubmission}
+        revealPoem={revealPoem}
+      />
 
     </div>
   );
